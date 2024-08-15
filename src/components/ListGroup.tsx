@@ -17,9 +17,10 @@ const ListItem = styled.li<ListItemProps>`
 `;
 interface Props {
   items: string[];
+  onSelectItem: (item:string) => void;
 }
 
-const ListGroup = ({ items }: Props) => {
+const ListGroup = ({ items, onSelectItem }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
     <List>
@@ -29,6 +30,7 @@ const ListGroup = ({ items }: Props) => {
           key={item}
           onClick={() => {
             setSelectedIndex(index);
+            onSelectItem(item);
           }}
         >
           {item}
